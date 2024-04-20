@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	_ "go-gin-vue/core"
+	"go-gin-vue/core/core_inside"
 	"go-gin-vue/route"
 )
 
@@ -14,7 +15,7 @@ func main() {
 	route.UserController{}.UserInfo(engine)
 	route.ChatController{}.Chat(engine)
 	route.RedirectController{}.Redirect(engine)
-	engine.Run(":8080")
+	engine.Run(":" + core_inside.ServerConfig.ServerPort)
 }
 
 func login(c *gin.Context) {

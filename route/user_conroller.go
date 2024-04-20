@@ -19,6 +19,9 @@ func (user UserController) UserInfo(engine *gin.Engine) {
 	group := engine.Group("/user")
 	group.Use(middleware.MiddleWare())
 	{
+
+		group.GET("list", service.ListUserInfo)
+
 		group.GET("/login", middleware.TimeMiddleware(), func(context *gin.Context) {
 			user.infoMsg(context)
 			fmt.Println("你来登录了 小可爱")
